@@ -75,7 +75,7 @@ declare global {
          * Used to set precise RGBA color codes in color picker.
          * @tutorial https://www.onetap.com/resources/setcolor.73/
          */
-        function SetColor(itemPath: [ string, string, string, string? ], color: rgba) :void;
+        function SetColor(itemPath: [string, string, string, string?], color: rgba): void;
 
         /**
          * Adds a color picker
@@ -87,7 +87,7 @@ declare global {
          * Will create a dropdown with items under Misc - JAVASCRIPT - Script items.
          */
         function AddDropdown(itemName: string, items: string[]): void;
-        
+
         /**
          * Adds a dropdown with ability to select more items.
          * @example UI.AddMultiDropdown( "Test", [ "one", "two", "three", "four" ] );
@@ -118,7 +118,7 @@ declare global {
          * Adds a checkbox control
          */
         function AddCheckbox(name: string): void;
-        
+
         /**
          * Can be used to determine whether or not hotkey is active.
          * @example cosnt isKeyActive = UI.IsHotkeyActive( "Legit", "GENERAL", "General", "Enabled" );
@@ -143,19 +143,19 @@ declare global {
          * Changes menu item(s) visibility.
          * @tutorial https://www.onetap.com/resources/setenabled.43/
          */
-        function SetEnabled(itemPath: [ string, string, string, string ], enabled: boolean): void;
+        function SetEnabled(itemPath: [string, string, string, string], enabled: boolean): void;
 
         /**
          * Sets the value of an UI item's setting.
          * @returns undefined if an item could not be found, setting value otherwise
          * @tutorial https://www.onetap.com/resources/setvalue.42/
          */
-        function SetValue(itemPath: [ string, string, string, string ], value: any): any | undefined;
+        function SetValue(itemPath: [string, string, string, string], value: any): any | undefined;
 
         /**
          * Returns the value of UI item's setting.
          */
-        function GetValue(itemPath: [ string, string, string, string ]): any;
+        function GetValue(itemPath: [string, string, string, string]): any;
 
     }
 
@@ -196,7 +196,7 @@ declare global {
          * @returns [x, y, z]
          */
         function GetEyePosition(entityIndex: EntityIndex): [number, number, number];
-        
+
         /**
          * Returns entity index of game rules entity
          */
@@ -243,7 +243,7 @@ declare global {
          * @tutorial https://www.onetap.com/resources/getentitiesbyclassid.87/
          */
         function GetEntitiesByClassID(classId: ClassId): Array<EntityIndex>;
-        
+
         /**
          * Finds out whether an entity is dormant.
          * @param entityIndex 
@@ -254,12 +254,12 @@ declare global {
          * Finds out whether an entity is alive.
          */
         function IsAlive(entityIndex: EntityIndex): boolean;
-        
+
         /** 
          * Finds out whether an entity is valid.
          */
         function IsValid(entityIndex: EntityIndex): boolean;
-        
+
         /**
          * Finds out whether an entity is the local player.
          */
@@ -294,12 +294,12 @@ declare global {
          * Returns the entity index of local the player.
          */
         function GetLocalPlayer(): EntityIndex;
-            
+
         /**
          * Returns an array of player entity indexes.
          */
         function GetPlayers(): Array<EntityIndex>;
-        
+
         /**
          * Returns an array of teammate entity indexes.
          */
@@ -311,19 +311,109 @@ declare global {
         function GetEnemies(): Array<EntityIndex>;
     }
 
+    /**
+     * #TODO
+     */
     namespace Render {
-
+        function FilledCircle(x: number, y: number, r: number, color: rgba): boolean;
+        function TexturedRect(x: number, y: number, width: number, height: number, texture: any): boolean;
+        //TODO return type
+        function AddTexture(path:string):any;
+        //TODO font type
+        function TextSizeCustom(text:string, font:any):[any,number];
+        //TODO font type
+        function StringCustom(x:number,y:number, align:number, text:string, color:rgba, font:any):boolean;
+        //TODO return type
+        function FindFont(name:string, size:number,  weight:number):any;
+        //TODO return type
+        function AddFont(name:string,  size:number,  weight:number):any;
+        function Polygon(data:[[number,number],[number,number],[number,number]], color:rgba): boolean;
+        function GradientRect(x: number, y:number, w:number, h:number, dir:number, color1:rgba, color2:rgba): boolean;
+        //TODO type of TextSize()[0]
+        function TextSize(text: string, size:number | null): [any, number];
+        function GetScreenSize(): [number, number];
+        function WorldToScreen(point: [number, number, number]): [number, number];
+        function Circle(x: number, y: number, r: number, color: rgba): boolean;
+        function FilledRect(x: number, y: number, width: number, height: number, color: rgba): boolean;
+        function Rect(x: number, y: number, width: number, height: number, color: rgba): boolean;
+        function Line(x: number, y: number, x1: number, y1: number, color: rgba): boolean;
+        function String(x: number, y: number, align: number, message: string, color: rgba, size: number | null): boolean;
     }
 
+    /**
+     * @tutorial https://www.onetap.com/resources/categories/convar.6/
+     */
     namespace Convar {
+        /**
+         * Sets the string value of the given console command.
+         * @returns true on success or false on failure.
+         * @example Convar.SetString ("r_aspectratio", "1");
+         */
+        function SetString(cmd: string, str: string): boolean;
 
+        /**
+         * Finds the string value of the given console command.
+         * @returns the value of the parameter or false.
+         * @example const name = Convar.GetString("name");
+         */
+        function GetString(cmd: string): string | false;
+
+        /**
+         * Sets the float value of the given console command.
+         * @returns true on success or false on failure.
+         * @example Convar.SetFloat("cl_ragdoll_gravity", 100.00);
+         */
+        function SetFloat(cmd: string, float: number): boolean;
+
+        /**
+         * Finds the float value of the given console command.
+         * @returns the value of the parameter or false.
+         * @example const sv_gravity_value = Convar.GetFloat("cl_ragdoll_gravity");
+         */
+        function GetFloat(cmd: string): number | false;
+
+        /**
+         * Sets the integer value of the given console command.
+         * @returns true on success or false on failure.
+         * @example Convar.SetInt("cl_ragdoll_gravity", 100);
+         */
+        function SetInt(cmd: string, value: number): boolean;
+
+        /**
+         * Finds the integer value of the given console command.
+         * @returns the value of the parameter or false.
+         * @example const sv_gravity_value = Convar.GetInt("cl_ragdoll_gravity");
+         * Cheat.Print(sv_gravity_value);
+         */
+        function GetInt(cmd: string): number | false;
     }
 
     /**
      * #TODO
      */
-    namespace Event {
-        
+    namespace OtEvent{
+        /**
+         * Finds the string value of the given game event
+         * @returns the value of the parameter or false
+         * @tutorial https://www.onetap.com/resources/getstring.62/
+         */
+        function GetString(str: string): string | false; 
+
+        /**
+         * Finds the float value of the given game event
+         * @returns the value of the parameter or false
+         * @tutorial https://www.onetap.com/resources/getfloat.61/
+         * @example pos_x = Event.GetFloat("x");
+         */
+        function GetFloat(floatName: string): number | false;
+
+        /**
+         * Finds the integer value of the given game event.
+         * @returns the value of the parameter or false.
+         * @tutorial https://www.onetap.com/resources/getint.60/
+         * @example userid = Event.GetInt("userid");
+         */
+        function GetInt(intName: string): number | false
     }
 
     /**
@@ -335,7 +425,7 @@ declare global {
          * Returns entity index and number fraction.
          * @tutorial https://www.onetap.com/resources/rawline.187/
          */
-        function RawLine(skipIndex: EntityIndex|0, startVec3: [ number, number, number ], endVec3: [ number, number, number ], mask: number, type: number): [ EntityIndex,  number ];
+        function RawLine(skipIndex: EntityIndex | 0, startVec3: [number, number, number], endVec3: [number, number, number], mask: number, type: number): [EntityIndex, number];
 
         /**
          * Used to check if smoke is between two points.
@@ -343,22 +433,22 @@ declare global {
          * @tutorial https://www.onetap.com/resources/smoke.179/
          * #TODO
          */
-        function Smoke(start: [ number, number, number ], end: [ number, number, number ]): 1|null;
-        
+        function Smoke(start: [number, number, number], end: [number, number, number]): 1 | null;
+
         /**
          * Used to trace bullet between two entities.
          * @returns entity index, damage, visibility, and hitbox
          * @tutorial https://www.onetap.com/resources/bullet.79/
          * #TODO
          */
-        function Bullet(entityIndex: EntityIndex, target: EntityIndex, start: [ number, number, number ], end: [ number, number, number ]): [ EntityIndex, number, number, HitboxIndex ];
+        function Bullet(entityIndex: EntityIndex, target: EntityIndex, start: [number, number, number], end: [number, number, number]): [EntityIndex, number, number, HitboxIndex];
 
         /**
          * Used to trace line between point A and B.
          * Fraction info: 1.0 means it didnt hit anything, 0.5 means it hit something half way through, 0.1 is hit
          * Returns entity index and number fraction.
          */
-        function Line(entityIndex: EntityIndex, start: [ number, number, number ], end: [ number, number, number ]): [ EntityIndex,  number ];
+        function Line(entityIndex: EntityIndex, start: [number, number, number], end: [number, number, number]): [EntityIndex, number];
     }
 
     /**
@@ -600,7 +690,7 @@ declare global {
          * @param state (0 = disabled, 1 = enabled)
          * @see https://www.onetap.com/resources/setoverride.126/
          */
-        function SetOverride(state: 0|1): void;
+        function SetOverride(state: 0 | 1): void;
 
     }
 
@@ -649,42 +739,42 @@ declare global {
          * Ignores a target for 1 tick.   
          * Note: ForceTarget is only active for 1 tick and must be called on CreateMove callback.
          */
-        function IgnoreTarget(entity_index : EntityIndex) :void;
-        
+        function IgnoreTarget(entity_index: EntityIndex): void;
+
         /**
          * Forces safety on a specific hitbox   
          * Note: ForceHitboxSafety is only active for 1 tick and must be called on CreateMove callback.
          */
-        function ForceHitboxSafety(hitbox_index : HitboxIndex):void;
-        
+        function ForceHitboxSafety(hitbox_index: HitboxIndex): void;
+
         /**
          * Overrides minimum damage on a specific target   
          * Note: ForceTargetMinimumDamage is only active for 1 tick and must be called on CreateMove callback.
          */
-        function ForceTargetMinimumDamage(entity_index:EntityIndex, minimum_damage : number) : void;
-        
+        function ForceTargetMinimumDamage(entity_index: EntityIndex, minimum_damage: number): void;
+
         /**
          * Overrides hitchance on a specific target   
          * Note: ForceTargetHitchance is only active for 1 tick and must be called on CreateMove callback.
          */
-        function ForceTargetHitchance(entity_index:EntityIndex, hitchance : number) : void;
+        function ForceTargetHitchance(entity_index: EntityIndex, hitchance: number): void;
 
         /**
          * Forces safety on a specific target.   
          * Note: ForceTargetSafety is only active for 1 tick and must be called on CreateMove callback.
          */
-        function ForceTargetSafety(entity_index:EntityIndex): void;
+        function ForceTargetSafety(entity_index: EntityIndex): void;
 
         /**
          * Forces the rage-bot to target a specific entity.   
          * Note: ForceTarget is only active for 1 tick and must be called on CreateMove callback.
          */
-        function ForceTarget(entity_index:EntityIndex): void;
-        
+        function ForceTarget(entity_index: EntityIndex): void;
+
         /**
          * Used to get ragebot target.
          */
-        function GetTarget() : EntityIndex;
+        function GetTarget(): EntityIndex;
     }
 
     namespace Material {
@@ -699,22 +789,22 @@ declare global {
          * @see {@link https://developer.valvesoftware.com/wiki/Category:List_of_Shader_Parameters| List of shader parameters}
          * @see {@link https://developer.valvesoftware.com/wiki/VertexLitGeneric| VertexLitGeneric docs}
          */
-        function SetKeyValue(material_index: number, key: string, value: string) : boolean;
+        function SetKeyValue(material_index: number, key: string, value: string): boolean;
 
         /**
          * Used to apply new set key values. Can only be used in material callback!
          */
-        function Refresh(material_index : number) : boolean;
+        function Refresh(material_index: number): boolean;
 
         /**
          * Used to get material index. Can only be used in material callback!
          */
-        function Get(name: string) : number;
-        
+        function Get(name: string): number;
+
         /**
          * Returns true if material was destroyed successfully.
          */
-        function Destroy(name:string) : boolean;
+        function Destroy(name: string): boolean;
     }
 
     type EntityIndex = number | (() => number);
