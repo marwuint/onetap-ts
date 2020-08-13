@@ -1,23 +1,23 @@
 {
-  "name": "onetapsxx",
-  "version": "1.0.0",
-  "description": "Typescript typings  for global onetap scripting module/library",
-  "types": "./src/index.d.ts",
+  "name": "onetap-types",
+  "version": "0.0.1",
+  "description": "Typescript typings for global onetap.su scripting module/library",
+  "types": "./index.d.ts",
   "scripts": {
-    "ts:defs": "tsc --declaration --outDir . --emitDeclarationOnly",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
     "url": "https://gitlab.vegova.si/yeet/onetaps.git"
   },
   "keywords": [
-    "onetap",
-    "typescript-types"
+    "onetap.su",
+    "onetap.com",
+    "p100"
   ],
   "contributors": [
     "Martin Hanzlowsky <martin.hanzlowsky@gmail.com>",
-    "Matic Babnik"
+    "Matic Babnik <matic.babnik1@gmail.com>"
   ],
   "license": "MIT",
   "dependencies": {},
