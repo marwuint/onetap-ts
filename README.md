@@ -24,6 +24,7 @@ npm install onetap-ts
         "esModuleInterop": true,
         "allowJs": true,
         "checkJs": true,
+        "types": ["onetap-ts"],
         
         "strict": true,
         "alwaysStrict": true,
