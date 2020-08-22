@@ -391,7 +391,7 @@ declare global {
     /**
      * #TODO
      */
-    namespace OtEvent{
+    namespace Event {
         /**
          * Finds the string value of the given game event
          * @returns the value of the parameter or false

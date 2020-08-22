@@ -2,6 +2,7 @@
     "exclude": [ "node_modules" ],
     "compilerOptions": {
         "target": "ES5",
+        "lib": ["es5"],
         "module": "CommonJS",
         "esModuleInterop": true,
         "allowJs": true,
