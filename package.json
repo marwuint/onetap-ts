@@ -1,6 +1,6 @@
 {
   "name": "onetap-ts",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Typescript typings for global onetap.su scripting module/library",
   "types": "./index.d.ts",
   "scripts": {
@@ -15,8 +15,11 @@
     "onetap.com",
     "p100"
   ],
+  "author": {
+    "name": "Martin Hanzlowsky",
+    "email": "martin.hanzlowskyg@gmail.com"
+  },
   "contributors": [
-    "Martin Hanzlowsky <martin.hanzlowskyg@gmail.com>",
     "Matic Babnik <matic.babnik1@gmail.com>"
   ],
   "license": "MIT",
