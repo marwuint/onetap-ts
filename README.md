@@ -25,7 +25,7 @@ To transpile scripts once run:
 ```bash
 npm run build
 ```
-This generate ES5 .js into `ot/scripts`
+This generates ES5 .js into `ot/scripts`
 ***
 For development you can use:
 ```bash
