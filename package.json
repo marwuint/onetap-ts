@@ -6,6 +6,9 @@
   "scripts": {
     
   },
+  "bin":{
+    "init":"bin/init"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/marwuint/onetap-ts.git"

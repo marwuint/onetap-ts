@@ -1,5 +1,5 @@
 {
-  "description": "",
+  "description": "Typescript files & stuff",
   "scripts": {
     "start": "tsc -w",
     "build": "tsc"

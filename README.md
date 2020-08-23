@@ -1,41 +1,42 @@
-Typescript typings for global onetap.su scripting module/library
-## Usage
+# Onetap-ts [beta]
+Typescript support for onetap.com js
+ 
+## Instalation
 
 * [Install node](https://nodejs.org/en/)
 
-* Install typescript
-```bash
+* Install typescript 
+```
 npm install -g typescript
 ```
 
-* Install type declarations
+* Run onetap-ts installer
+
 ```bash
-npm install onetap-ts
+# this must be run from the 'ot' folder
+# [CSGO INSTALL LOCATION]\Counter-Strike Global Offensive\ot
+npx onetap-ts init
 ```
+## Usage
+If you use VSCode, you should automatically get better autocomplete.
+For other editors you might need to install a TS language server.
 
-* Create a tsconfig.json file with these settings
-```json
-{   
-    "exclude": [ "node_modules" ],
-    "compilerOptions": {
-        "target": "ES5",
-        "lib": ["es5"],
-        "module": "CommonJS",
-        "esModuleInterop": true,
-        "allowJs": true,
-        "checkJs": true,
-        "types": ["onetap-ts"],
-        
-        "strict": true,
-        "alwaysStrict": true,
+After installation you can start adding scripts to `ot/onetap-ts`.
 
-        "noImplicitAny": true,
-        "strictFunctionTypes": true,
-        "forceConsistentCasingInFileNames": true,
-    }
-}
+To transpile scripts once run:
+```bash
+npm run build
 ```
+This generate ES5 .js into `ot/scripts`
 
-## Contribute
+For development you can use:
+```bash
+npm start
+```
+This does the same as build, but automatically updates on save.
 
-* [Submit bugs](https://github.com/marwuint/onetap-ts/issues)
+## Issues
+* [Pls report issues](https://github.com/marwuint/onetap-ts/issues) (also accepting feature requests)
+
+
+[xd](https://www.youtube.com/watch?v=BnwbOcX86qI)
