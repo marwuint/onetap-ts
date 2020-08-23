@@ -1,6 +1,6 @@
 {
   "name": "onetap-ts",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "description": "Typescript typings for global onetap.su scripting module/library",
   "types": "./index.d.ts",
   "scripts": {
