@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 });
 
 const colors = {
-    "red": '\x1b[91m',
+    red: '\x1b[91m',
     yellow: '\x1b[93m',
     green: '\x1b[92m',
     blue: '\x1b[94m',
@@ -17,47 +17,45 @@ const colors = {
 };
 
 function readLine(prompt) {
-    return new Promise((resolve, reject) => {
-        try {
-            rl.question(prompt, resolve);
-        } catch {
-            reject();
-        }
-
-    })
+    return new Promise((resolve) => rl.question(prompt, resolve))
 }
+
 function colorPrint(color, text) {
     console.log(color + text.toString() + colors.reset);
 }
+
 async function ynQuestion(prompt) {
     while (true) {
         const text = await readLine(prompt);
         let c = text.toLowerCase()[0];
-        if (c === 'y' || c === 'n') {
-            return c === 'y';
-        } else
-            module.exports.colorPrint(colors.red, "Invalid choice: y or n only");
+        if (c === 'y' || c === 'n') return c === 'y';
+
+        colorPrint(colors.red, "Invalid choice: y or n only");
     }
 }
+
 function deleteFolder(path) {
-    if (fs.existsSync(path)) {
-        fs.readdirSync(path).forEach(function (file, index) {
-            let curPath = path + "/" + file;
-            if (fs.lstatSync(curPath).isDirectory()) { // recurse
-                deleteFolder(curPath);
-            } else { // delete file
-                fs.unlinkSync(curPath);
-                colorPrint(colors.blue, `[INFO] deleted ${curPath}`);
-            }
-        });
-        fs.rmdirSync(path);
-    }
+    if (!fs.existsSync(path)) return null;
+
+    fs.readdirSync(path).forEach(file => {
+        const curPath = path + "/" + file;
+
+        if (fs.lstatSync(curPath).isDirectory()) { // recurse
+            deleteFolder(curPath);
+        } else { // delete file
+            fs.unlinkSync(curPath);
+            colorPrint(colors.blue, `[INFO] deleted ${curPath}`);
+        }
+    })
+    fs.rmdirSync(path);
 }
+
 function safeIO(f) {
     try {
         f();
     } catch{ }
 }
+
 function npm(command) {
     return new Promise((resolve, reject) => {
         exec(`npm ${command}`, (err, stdout, stderr) => {
@@ -66,13 +64,13 @@ function npm(command) {
         });
     })
 }
+
 module.exports = {
-    c: colors,
-    colorPrint: colorPrint,
-    readLine: readLine,
-    ynQuestion: ynQuestion,
-    deleteFolder: deleteFolder,
-    npm: npm,
+    colors,
+    colorPrint,
+    ynQuestion,
+    deleteFolder,
+    npm,
     sIO:safeIO
 }
 
