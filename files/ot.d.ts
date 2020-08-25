@@ -62,6 +62,7 @@ declare global {
          * @tutorial https://www.onetap.com/resources/togglehotkey.81/
          * @example UI.ToggleHotkey("Rage", "GENERAL", "Exploits", "Doubletap");
          */
+        function ToggleHotkey(itemPath: string): boolean | (1 | 0);
         function ToggleHotkey(...itemPath: string[]): boolean | (1 | 0);
 
         /**
@@ -73,9 +74,11 @@ declare global {
 
         /**
          * Used to set precise RGBA color codes in color picker.
+         * @param itemPath - can be a a single string
          * @tutorial https://www.onetap.com/resources/setcolor.73/
          */
-        function SetColor(itemPath: [string, string, string, string?], color: rgba): void;
+        function SetColor(itemPath: string, color: rgba): void;
+        function SetColor(itemPathA: string, itemPathB: string, itemPathC: string, itemPathD: string, color: rgba): void;
 
         /**
          * Adds a color picker
@@ -107,12 +110,12 @@ declare global {
         /**
          * Create a floating point slider
          */
-        function AddSliderFloat(nam: string, minValue: number, maxValue: number): void;
+        function AddSliderFloat(name: string, minValue: number, maxValue: number): void;
 
         /**
          * Adds an integer slider
          */
-        function AddSliderInt(nam: string, minValue: number, maxValue: number): void;
+        function AddSliderInt(name: string, minValue: number, maxValue: number): void;
 
         /**
          * Adds a checkbox control
@@ -143,20 +146,22 @@ declare global {
          * Changes menu item(s) visibility.
          * @tutorial https://www.onetap.com/resources/setenabled.43/
          */
-        function SetEnabled(itemPath: [string, string, string, string], enabled: boolean): void;
-
+        function SetEnabled(itemPath: string, enabled: boolean): void;
+        function SetEnabled(itemPathA: string, itemPathB: string, itemPathC: string, itemPathD: string, enabled: boolean): void;
+        
         /**
          * Sets the value of an UI item's setting.
          * @returns undefined if an item could not be found, setting value otherwise
          * @tutorial https://www.onetap.com/resources/setvalue.42/
          */
-        function SetValue(a: string, b: string | any, c?: string | any, d?: any, value?: any): any | undefined;
+        function SetValue(itemPathA: string, itemPathB: string, itemPathC: string, itemPathD: string, value: any): any | undefined;
+        function SetValue(itemPath: string, value: any): any | undefined;
 
         /**
          * Returns the value of UI item's setting.
          */
-        function GetValue(a: string, b?: string, c?: string, d?: string): any;
-
+        function GetValue(itemPath: string): any;
+        function GetValue(...itemPath: string[]): any;
     }
 
     /**
