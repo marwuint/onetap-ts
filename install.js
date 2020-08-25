@@ -17,7 +17,7 @@ async function installer() {
 
         colorPrint(yellow, '[WARN] Do you want to delete your .ts scripts ? [y/n]');
         await ynQuestion('') ? deleteFolder('./onetap-ts') : fs.readdirSync(sourceDir)
-            .forEach(file => sIO(() => file === 'example.ts' ? '' : fs.unlinkSync(`./onetap-ts/${file}`)));
+            .forEach(file => sIO(() => file === 'example.ts' ? '' : fs.unlinkSync(`./onetap-ts/${remx(file)}`)));
     }
     
     installFiles()
@@ -33,7 +33,7 @@ function installFiles() {
     const files = fs.readdirSync(sourceDir);
     
     files.forEach(file => {
-        fs.copyFileSync(`${sourceDir}/${file}`, `${destDir}/${file}`);
+        fs.copyFileSync(`${sourceDir}/${file}`, `${destDir}/${remx(file)}`);
         colorPrint(blue, `[INFO] Wrote ${file}`);
     })
 }
@@ -45,4 +45,7 @@ async function installTs() {
     colorPrint(blue,'[INFO] Typescript is (probably) installed');
 }
 
+function remx(filename){
+    return filename.replace(/\.x/g, '');
+}
 installer();
