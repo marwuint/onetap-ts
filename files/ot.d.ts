@@ -150,12 +150,12 @@ declare global {
          * @returns undefined if an item could not be found, setting value otherwise
          * @tutorial https://www.onetap.com/resources/setvalue.42/
          */
-        function SetValue(itemPath: [string, string, string, string], value: any): any | undefined;
+        function SetValue(a: string, b: string | any, c?: string | any, d?: any, value?: any): any | undefined;
 
         /**
          * Returns the value of UI item's setting.
          */
-        function GetValue(itemPath: [string, string, string, string]): any;
+        function GetValue(a: string, b?: string, c?: string, d?: string): any;
 
     }
 
@@ -318,19 +318,19 @@ declare global {
         function FilledCircle(x: number, y: number, r: number, color: rgba): boolean;
         function TexturedRect(x: number, y: number, width: number, height: number, texture: any): boolean;
         //TODO return type
-        function AddTexture(path:string):any;
+        function AddTexture(path: string): any;
         //TODO font type
-        function TextSizeCustom(text:string, font:any):[any,number];
+        function TextSizeCustom(text: string, font: any): [any, number];
         //TODO font type
-        function StringCustom(x:number,y:number, align:number, text:string, color:rgba, font:any):boolean;
+        function StringCustom(x: number, y: number, align: number, text: string, color: rgba, font: any): boolean;
         //TODO return type
-        function FindFont(name:string, size:number,  weight:number):any;
+        function FindFont(name: string, size: number, weight: number): any;
         //TODO return type
-        function AddFont(name:string,  size:number,  weight:number):any;
-        function Polygon(data:[[number,number],[number,number],[number,number]], color:rgba): boolean;
-        function GradientRect(x: number, y:number, w:number, h:number, dir:number, color1:rgba, color2:rgba): boolean;
+        function AddFont(name: string, size: number, weight: number): any;
+        function Polygon(data: [[number, number], [number, number], [number, number]], color: rgba): boolean;
+        function GradientRect(x: number, y: number, w: number, h: number, dir: number, color1: rgba, color2: rgba): boolean;
         //TODO type of TextSize()[0]
-        function TextSize(text: string, size:number | null): [any, number];
+        function TextSize(text: string, size: number | null): [any, number];
         function GetScreenSize(): [number, number];
         function WorldToScreen(point: [number, number, number]): [number, number];
         function Circle(x: number, y: number, r: number, color: rgba): boolean;
@@ -397,7 +397,7 @@ declare global {
          * @returns the value of the parameter or false
          * @tutorial https://www.onetap.com/resources/getstring.62/
          */
-        function GetString(str: string): string | false; 
+        function GetString(str: string): string | false;
 
         /**
          * Finds the float value of the given game event
