@@ -1,6 +1,6 @@
 {
   "name": "onetap-ts",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "Typescript support for onetap.com js",
   "types": "./index.d.ts",
   "scripts": {
