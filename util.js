@@ -40,9 +40,9 @@ function deleteFolder(path) {
     fs.readdirSync(path).forEach(file => {
         const curPath = path + "/" + file;
 
-        if (fs.lstatSync(curPath).isDirectory()) { // recurse
+        if (fs.lstatSync(curPath).isDirectory()) { // Recurse
             deleteFolder(curPath);
-        } else { // delete file
+        } else { // File deletion
             fs.unlinkSync(curPath);
             colorPrint(colors.blue, `[INFO] deleted ${curPath}`);
         }
