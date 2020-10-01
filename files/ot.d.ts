@@ -98,7 +98,7 @@ declare global {
         function AddMultiDropdown(itemName: string, items: string[]): void;
 
         /**
-         * Returns true if the menu is open, false otherwise.
+         * Returns true if the menu is open, otherwise false.
          */
         function IsMenuOpen(): boolean;
 
